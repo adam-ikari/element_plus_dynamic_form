@@ -41,6 +41,25 @@
           :placeholder="field.placeholder"
         ></el-date-picker>
 
+        <!-- 日期范围选择器 -->
+        <el-date-picker
+          v-else-if="field.type === 'daterange'"
+          v-model="formData[field.prop]"
+          type="daterange"
+          :start-placeholder="field.startPlaceholder"
+          :end-placeholder="field.endPlaceholder"
+          :format="field.format || 'YYYY-MM-DD'"
+          :value-format="field.valueFormat || 'YYYY-MM-DD'"
+        ></el-date-picker>
+
+        <!-- 日期时间选择器 -->
+        <el-date-picker
+          v-else-if="field.type === 'datetime'"
+          v-model="formData[field.prop]"
+          type="datetime"
+          :placeholder="field.placeholder"
+        ></el-date-picker>
+
         <!-- 文本域 -->
         <el-input
           v-else-if="field.type === 'textarea'"

@@ -172,6 +172,31 @@ const baseFormFields = [
     prop: 'themeColor',
     defaultValue: '#409EFF',
   },
+  // 日期输入类型演示
+  {
+    type: 'date',
+    label: '出生日期',
+    prop: 'birthDate',
+    placeholder: '请选择出生日期',
+    defaultValue: '',
+  },
+  {
+    type: 'daterange',
+    label: '工作时间',
+    prop: 'workRange',
+    startPlaceholder: '开始日期',
+    endPlaceholder: '结束日期',
+    format: 'YYYY-MM-DD',
+    valueFormat: 'YYYY-MM-DD',
+    defaultValue: [],
+  },
+  {
+    type: 'datetime',
+    label: '会议时间',
+    prop: 'meetingTime',
+    placeholder: '请选择会议时间',
+    defaultValue: '',
+  },
 ]
 
 // 表单字段配置
