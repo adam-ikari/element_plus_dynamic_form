@@ -13,6 +13,7 @@
 
 - [使用指南](./docs/dynamic-form-guide.md) - 详细介绍如何使用动态表单组件
 - [实现原理解析](./docs/implementation-details.md) - 深入解析动态表单的实现原理
+- [多国语实践指南](./src/views/I18nGuide.vue) - 了解如何实现非侵入式国际化
 
 ## 推荐 IDE 设置
 

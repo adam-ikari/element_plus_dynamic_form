@@ -1,6 +1,44 @@
 <template>
   <div class="home">
     <h1>动态表单示例</h1>
+    
+    <el-row :gutter="20" style="margin-bottom: 20px;">
+      <el-col :span="12">
+        <el-card>
+          <template #header>
+            <div class="card-header">
+              <span>多国语演示</span>
+            </div>
+          </template>
+          <p>查看实际的多国语演示页面，体验运行时语言切换功能</p>
+          <el-button 
+            type="primary" 
+            @click="$router.push('/i18n-demo')"
+            style="margin-top: 10px"
+          >
+            访问多国语演示
+          </el-button>
+        </el-card>
+      </el-col>
+      
+      <el-col :span="12">
+        <el-card>
+          <template #header>
+            <div class="card-header">
+              <span>多国语实践指南</span>
+            </div>
+          </template>
+          <p>了解如何在动态表单中实现非侵入式国际化</p>
+          <el-button 
+            type="primary" 
+            @click="$router.push('/i18n-guide')"
+            style="margin-top: 10px"
+          >
+            查看指南
+          </el-button>
+        </el-card>
+      </el-col>
+    </el-row>
     <DynamicForm :fields="formFields" @formSubmit="handleFormSubmit" @formReset="handleFormReset" />
 
     <div v-if="submittedData" class="result">
@@ -13,18 +51,22 @@
 <script setup>
 import { ref, reactive, watch } from 'vue'
 import DynamicForm from '@/components/DynamicForm.vue'
+import { t } from '@/i18n'
+
+// 控制是否显示多国语指南提示
+const showI18nGuide = ref(true)
 
 // 基础表单字段配置
 const baseFormFields = [
   {
     type: 'input',
-    label: '用户名',
+    label: t('form.field.username'),
     prop: 'username',
-    placeholder: '请输入用户名',
+    placeholder: t('form.placeholder.username'),
     defaultValue: '',
     rules: [
-      { required: true, message: '请输入用户名', trigger: 'blur' },
-      { min: 3, max: 15, message: '长度在 3 到 15 个字符', trigger: 'blur' },
+      { required: true, message: t('validation.required', { name: t('form.field.username') }), trigger: 'blur' },
+      { min: 3, max: 15, message: t('validation.length', { min: 3, max: 15 }), trigger: 'blur' },
     ],
   },
   {
