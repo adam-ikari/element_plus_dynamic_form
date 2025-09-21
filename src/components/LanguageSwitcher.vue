@@ -2,7 +2,7 @@
   <div class="language-switcher">
     <el-dropdown @command="handleLanguageChange">
       <el-button size="small" type="primary">
-        {{ currentLocale === 'zh-CN' ? '中文' : 'English' }}
+        {{ $i18n.locale === 'zh-CN' ? '中文' : 'English' }}
         <el-icon class="el-icon--right">
           <arrow-down />
         </el-icon>
@@ -19,10 +19,12 @@
 
 <script setup>
 import { ArrowDown } from '@element-plus/icons-vue'
-import { currentLocale, setLocale } from '@/i18n'
+import { useI18n } from 'vue-i18n'
 
-const handleLanguageChange = (locale) => {
-  setLocale(locale)
+const { locale } = useI18n()
+
+const handleLanguageChange = (newLocale) => {
+  locale.value = newLocale
 }
 </script>
 

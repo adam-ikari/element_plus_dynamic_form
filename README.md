@@ -8,12 +8,14 @@
 - 条件显示（根据下拉菜单选择显示不同字段）
 - 表单验证
 - 响应式设计
+- 多国语支持（基于 vue-i18n 库实现）
 
 ## 文档
 
 - [使用指南](./docs/dynamic-form-guide.md) - 详细介绍如何使用动态表单组件
 - [实现原理解析](./docs/implementation-details.md) - 深入解析动态表单的实现原理
 - [多国语实践指南](./src/views/I18nGuide.vue) - 了解如何实现非侵入式国际化
+- [多国语演示页面](./src/views/I18nDemo.vue) - 实际的多国语演示页面
 
 ## 推荐 IDE 设置
 

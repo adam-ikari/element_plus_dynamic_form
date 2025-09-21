@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
-import I18nGuide from '@/views/I18nGuide.vue'
+import DynamicFromView from '@/views/DynamicFromView.vue'
 import I18nDemo from '@/views/I18nDemo.vue'
 
 const router = createRouter({
@@ -9,18 +9,18 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
     },
     {
-      path: '/i18n-guide',
-      name: 'i18n-guide',
-      component: I18nGuide
+      path: '/dynamic-form',
+      name: 'dynamic-form',
+      component: DynamicFromView,
     },
     {
       path: '/i18n-demo',
       name: 'i18n-demo',
-      component: I18nDemo
-    }
+      component: I18nDemo,
+    },
   ],
 })
 

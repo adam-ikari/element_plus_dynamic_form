@@ -1,13 +1,13 @@
 <template>
   <div class="i18n-demo">
-    <h1>{{ t('i18n.demo.title') }}</h1>
+    <h1>{{ $t('i18n.demo.title') }}</h1>
     
     <el-row :gutter="20">
       <el-col :span="12">
         <el-card>
           <template #header>
             <div class="card-header">
-              <span>{{ t('i18n.demo.formDemo') }}</span>
+              <span>{{ $t('i18n.demo.formDemo') }}</span>
             </div>
           </template>
           
@@ -23,7 +23,7 @@
         <el-card>
           <template #header>
             <div class="card-header">
-              <span>{{ t('i18n.demo.submittedData') }}</span>
+              <span>{{ $t('i18n.demo.submittedData') }}</span>
             </div>
           </template>
           
@@ -31,35 +31,35 @@
             <pre>{{ JSON.stringify(submittedData, null, 2) }}</pre>
           </div>
           <div v-else>
-            <p>{{ t('i18n.demo.noData') }}</p>
+            <p>{{ $t('i18n.demo.noData') }}</p>
           </div>
         </el-card>
         
         <el-card style="margin-top: 20px;">
           <template #header>
             <div class="card-header">
-              <span>{{ t('i18n.demo.languageSwitch') }}</span>
+              <span>{{ $t('i18n.demo.languageSwitch') }}</span>
             </div>
           </template>
           
           <div class="language-selector">
             <el-button 
-              :type="currentLocale === 'zh-CN' ? 'primary' : 'default'"
-              @click="setLocale('zh-CN')"
+              :type="$i18n.locale === 'zh-CN' ? 'primary' : 'default'"
+              @click="switchLanguage('zh-CN')"
             >
-              {{ t('i18n.demo.chinese') }}
+              {{ $t('i18n.demo.chinese') }}
             </el-button>
             <el-button 
-              :type="currentLocale === 'en-US' ? 'primary' : 'default'"
-              @click="setLocale('en-US')"
+              :type="$i18n.locale === 'en-US' ? 'primary' : 'default'"
+              @click="switchLanguage('en-US')"
               style="margin-left: 10px;"
             >
-              {{ t('i18n.demo.english') }}
+              {{ $t('i18n.demo.english') }}
             </el-button>
           </div>
           
           <div style="margin-top: 20px;">
-            <p>{{ t('i18n.demo.currentLanguage') }}: {{ currentLocale === 'zh-CN' ? t('i18n.demo.chinese') : t('i18n.demo.english') }}</p>
+            <p>{{ $t('i18n.demo.currentLanguage') }}: {{ $i18n.locale === 'zh-CN' ? $t('i18n.demo.chinese') : $t('i18n.demo.english') }}</p>
           </div>
         </el-card>
       </el-col>
@@ -70,7 +70,14 @@
 <script setup>
 import { ref, computed } from 'vue'
 import DynamicForm from '@/components/DynamicForm.vue'
-import { t, currentLocale, setLocale } from '@/i18n'
+import { useI18n } from 'vue-i18n'
+
+const { t, locale } = useI18n()
+
+// 切换语言
+const switchLanguage = (newLocale) => {
+  locale.value = newLocale
+}
 
 // 表单字段配置（使用翻译函数）
 const formFields = computed(() => [
