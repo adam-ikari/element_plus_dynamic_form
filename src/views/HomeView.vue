@@ -112,6 +112,66 @@ const baseFormFields = [
     },
     rules: [{ required: true, message: '请输入专属客服工号', trigger: 'blur' }],
   },
+  // 新增的输入类型演示
+  {
+    type: 'switch',
+    label: '是否启用',
+    prop: 'isEnabled',
+    defaultValue: true,
+    activeText: '启用',
+    inactiveText: '禁用',
+  },
+  {
+    type: 'slider',
+    label: '音量调节',
+    prop: 'volume',
+    defaultValue: 50,
+    min: 0,
+    max: 100,
+    step: 1,
+    showInput: true,
+    dependency: {
+      field: 'isEnabled',
+      value: true,
+    },
+  },
+  {
+    type: 'radio',
+    label: '性别',
+    prop: 'gender',
+    defaultValue: 'male',
+    options: [
+      { label: '男', value: 'male' },
+      { label: '女', value: 'female' },
+      { label: '其他', value: 'other' },
+    ],
+  },
+  {
+    type: 'checkbox',
+    label: '兴趣爱好',
+    prop: 'hobbies',
+    defaultValue: [],
+    options: [
+      { label: '阅读', value: 'reading' },
+      { label: '运动', value: 'sports' },
+      { label: '音乐', value: 'music' },
+      { label: '旅行', value: 'travel' },
+    ],
+  },
+  {
+    type: 'rate',
+    label: '满意度评分',
+    prop: 'satisfaction',
+    defaultValue: 0,
+    max: 5,
+    allowHalf: true,
+  },
+  {
+    type: 'color',
+    label: '主题颜色',
+    prop: 'themeColor',
+    defaultValue: '#409EFF',
+  },
 ]
 
 // 表单字段配置

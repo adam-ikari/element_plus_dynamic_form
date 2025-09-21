@@ -48,6 +48,66 @@
           type="textarea"
           :placeholder="field.placeholder"
         ></el-input>
+
+        <!-- 开关 -->
+        <el-switch
+          v-else-if="field.type === 'switch'"
+          v-model="formData[field.prop]"
+          :active-text="field.activeText"
+          :inactive-text="field.inactiveText"
+        ></el-switch>
+
+        <!-- 滑块 -->
+        <el-slider
+          v-else-if="field.type === 'slider'"
+          v-model="formData[field.prop]"
+          :min="field.min || 0"
+          :max="field.max || 100"
+          :step="field.step || 1"
+          :show-input="field.showInput || false"
+        ></el-slider>
+
+        <!-- 单选框 -->
+        <el-radio-group
+          v-else-if="field.type === 'radio'"
+          v-model="formData[field.prop]"
+        >
+          <el-radio
+            v-for="option in field.options"
+            :key="option.value"
+            :label="option.value"
+          >
+            {{ option.label }}
+          </el-radio>
+        </el-radio-group>
+
+        <!-- 复选框 -->
+        <el-checkbox-group
+          v-else-if="field.type === 'checkbox'"
+          v-model="formData[field.prop]"
+        >
+          <el-checkbox
+            v-for="option in field.options"
+            :key="option.value"
+            :label="option.value"
+          >
+            {{ option.label }}
+          </el-checkbox>
+        </el-checkbox-group>
+
+        <!-- 评分 -->
+        <el-rate
+          v-else-if="field.type === 'rate'"
+          v-model="formData[field.prop]"
+          :max="field.max || 5"
+          :allow-half="field.allowHalf || false"
+        ></el-rate>
+
+        <!-- 颜色选择器 -->
+        <el-color-picker
+          v-else-if="field.type === 'color'"
+          v-model="formData[field.prop]"
+        ></el-color-picker>
       </el-form-item>
     </template>
 
